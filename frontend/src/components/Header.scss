@@ -1,0 +1,113 @@
+@use '../App.scss' as *;
+
+header{
+    width: 100%;
+    height: 90px;
+    padding-inline: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba($neutral-color-white, 0.3);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    transition: all 0.2s ease;
+    outline: rgba($neutral-color-dark-gray, 0.3) solid 1px;
+    backdrop-filter: blur(8px);
+
+    &:hover{
+        background-color: rgba($neutral-color-white, 1);
+    }
+
+    .header-logo-container{
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        img{
+            height: 60px;
+            margin-right: 8px;
+        }
+
+        p{
+            @include font-config($f20px, $fsemiBold, $neutral-color-dark-gray);
+        }
+    }
+
+    .header-links-container{
+        height: 100%;
+        display: flex;
+        column-gap: 20px;
+        align-items: center;
+        
+        a{
+            text-decoration: none;
+            @include font-config($f15px, $fmedium, $neutral-color-dark-gray);
+            transition: 0.2s;
+            line-height: 32px;
+
+            &:hover{
+                color: $primary-dark-blue;
+                text-decoration: underline;
+            }
+        }
+        
+        button{
+            @include common-button(200px, 45px);
+            @include font-config($f15px, $fsemiBold, $neutral-color-white);
+        }
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 1199px) {
+    
+    header{
+    height: 80px;
+    padding-inline: 16px;
+    justify-content: space-between;
+    position: initial;
+
+    .header-logo-container{
+
+        img{
+            height: 40px;
+        }
+
+        p{
+            display: none;
+        }
+    }
+
+    .header-links-container{
+        
+        a{
+            display: none;
+        }
+
+        a:last-of-type{
+            display: block;
+        }
+        
+        button{
+            @include common-button(150px, 40px);
+            @include font-config($f15px, $fsemiBold, $neutral-color-white);
+        }
+    }
+}
+}
+
+
+@media screen and (min-width: 420px) and (max-width: 1199px) {
+    
+    header{
+
+        .header-logo-container{
+
+            p{
+                display: block;
+                @include font-config($f15px, $fsemiBold, $neutral-color-dark-gray);
+            }
+        }
+    }
+}

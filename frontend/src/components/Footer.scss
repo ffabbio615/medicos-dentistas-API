@@ -1,0 +1,177 @@
+@use '../App.scss' as *;
+
+
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 600px;
+    justify-content: center;
+    background-color: $neutral-color-light-gray;
+    
+    .footer-links-container{
+    width: 100%;
+    padding-inline: 10%;
+    height: 500px;
+    background-color: $neutral-color-dark-gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+        .social-media-container{
+            width: 40%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 24px 0;
+
+            .footer-logo{
+                height: 60px;
+                margin-right: 8px;
+            }
+
+            p{
+                @include font-config($f20px, $fsemiBold, $neutral-color-white);
+            }
+
+            .social-media-buttons-container{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                column-gap: 16px;
+                margin-top: 24px;
+
+                button{
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $neutral-color-medium-gray;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: 0.2s;
+
+                    &:hover{
+                        background-color: $primary-dark-blue;
+                    }
+
+                    img{
+                        height: 20px;
+                    }
+                }
+            }
+        }
+    
+        .map-links-container{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+
+            .links-container{
+                width: 28%;
+                display: flex;
+                flex-wrap: wrap;
+
+                p{
+                    width: 100%;
+                    @include font-config($f20px, $fregular, $neutral-color-white);
+                    margin-bottom: 24px;
+                }
+
+                a{
+                    width: 100%;
+                    text-decoration: none;
+                    @include font-config($f14px, $fregular, $neutral-color-white);
+                    transition: 0.2s;
+                    line-height: 32px;
+
+                    &:hover{
+                        color: $primary-light-blue;
+                    }
+                }
+            }
+        }
+    }
+    
+    .footer-copyright{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        background-color: $neutral-color-black;
+        @include font-config($f14px, $fmedium, $neutral-color-white);
+        text-align: center;
+        letter-spacing: 0.2px;
+    }
+}
+
+
+@media screen and (min-width: 300px) and (max-width: 1199px) {
+
+    footer{
+        height: auto;
+        
+        .footer-links-container{
+        padding-inline: 16px;
+        height: auto;
+        flex-direction: column;
+        
+            .social-media-container{
+                width: 100%;
+
+                .footer-logo{
+                    height: 50px;
+                }
+
+                p{
+                    @include font-config($f24px, $fsemiBold, $neutral-color-white);
+                }
+
+                .social-media-buttons-container{
+
+                    button{
+                    
+                        img{
+                            height: 18px;
+                        }
+                    }
+                }
+            }
+        
+            .map-links-container{
+                width: 100%;
+                flex-wrap: wrap;
+
+                .links-container{
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin: 4px 0 24px 0;
+
+                    p{
+                        width: 100%;
+                        @include font-config($f22px, $fregular, $neutral-color-white);
+                        margin-bottom: 8px;
+                    }
+
+                    a{
+                        width: auto;
+                        @include font-config($f15px, $fregular, $neutral-color-white);
+                        line-height: 20px;
+                        padding-inline: 5px;
+                    }
+                }
+            }
+        }
+        
+        .footer-copyright{
+            padding-inline: 24px;
+            line-height: 22px !important;
+            @include font-config($f14px, $fmedium, $neutral-color-white);
+        }
+    }
+}

@@ -1,0 +1,106 @@
+   @use "../App.scss" as *;
+
+   .volunteer-form{
+        width: 100%;
+        height: auto;
+        padding: 24px;
+        background-color: $neutral-color-white;
+        border: 2px solid rgba($neutral-color-medium-gray, 0.9);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .form-title{
+            width: 100%;
+            @include font-config($f18px, $fbold, $neutral-color-black);
+            margin-bottom: 12px;
+        }
+
+        label{
+            width: 100%;
+            @include font-config($f14px, $fbold, $neutral-color-black);
+            margin-top: 24px;
+        }
+
+        input[type=text], input[type=email], input[type=number]{
+            width: 45%;
+            height: 40px;
+            border: 1px solid $neutral-color-medium-gray;
+            background-color: $neutral-color-light-gray;
+            border-radius: 8px;
+            margin: 24px 2% 0 2%;
+            @include font-config($f14px, $fregular, $neutral-color-black);
+            padding-left: 12px;
+        }
+
+        input[type=text]:last-of-type{
+            width: 94%;
+        }
+
+        textarea{
+            width: 90%;
+            height: 200px;
+            margin-top: 24px;
+            background-color: $neutral-color-light-gray;
+            @include font-config($f14px, $fregular, $neutral-color-black);
+            padding: 12px;
+        }
+
+        .form-advise-text{
+            width: 100%;
+            margin-block: 24px;
+            @include font-config($f14px, $fregular, $neutral-color-black);
+            text-align: center;
+        }
+
+        button{
+            @include common-button(220px, 50px);
+            @include font-config($f15px, $fsemiBold, $neutral-color-white);
+            letter-spacing: 0.5px;
+        }
+    }
+
+
+
+    @media screen and (min-width: 300px) and (max-width: 1199px){
+    .volunteer-form{
+        padding: 24px 16px;
+    
+        .form-title{
+            @include font-config($f20px, $fbold, $neutral-color-black);
+            margin-bottom: 4px;
+        }
+    
+        label{
+            @include font-config($f15px, $fbold, $neutral-color-black);
+            margin-top: 20px;
+        }
+    
+        input[type=text], input[type=email], input[type=number]{
+            width: 95%;
+            margin: 20px 0 0 0;
+            padding-left: 8px;
+        }
+    
+        input[type=number]:last-of-type{
+            width: 95%;
+        }
+    
+        textarea{
+            width: 95%;
+            height: 150px;
+            margin-top: 20px;
+            padding: 8px;
+        }
+    
+        .form-advise-text{
+            margin-block: 20px;
+        }
+    
+        button{
+            @include font-config($f16px, $fsemiBold, $neutral-color-white);
+        }
+    }
+    }

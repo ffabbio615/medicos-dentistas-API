@@ -1,0 +1,150 @@
+@use "../../App.scss" as *;
+
+.update-volunteer-section{
+    width: 100%;
+    height: 100%;
+    background-color: rgba($neutral-color-dark-gray, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 24px;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+
+    .update-volunteer-form-container{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.volunteers-list-container{
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    background-color: $primary-dark-blue;
+    color: $neutral-color-white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 48px;
+
+        h1{
+            width: 100%;
+            @include font-config(32px, $fbold, $neutral-color-white);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+    .volunteers-cards-container{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-inline: 10%;
+        padding-block: 24px;
+        gap: 24px;
+
+        .volunteers-card{
+            width: calc(33% - 24px);
+            min-width: 296px;
+            max-width: 296px;
+            height: 296px;
+            border: 2px solid $neutral-color-white;
+            border-radius: 12px;
+            background-color: $neutral-color-white;
+            color: $neutral-color-dark-gray;
+            box-shadow: 0 0 15px -3px rgba($neutral-color-dark-gray, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+
+            .volunteers-card-buttons{
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                width: 45px;
+                height: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                column-gap: 5px;
+
+                .volunteers-update-button, .volunteers-delete-button{
+                    width: 20px;
+                    height: 20px;
+                    border: none;
+                    border-radius: 50%;
+                    @include font-config(13px, $fsemiBold, $neutral-color-white);
+                    cursor: pointer;
+                }
+
+                .volunteers-update-button{
+                    background-color: $system-atention-yellow;
+        
+                    &:hover{
+                        background-color: darken($system-atention-yellow, 10%);
+                    }
+                }
+        
+                .volunteers-delete-button{
+                    background-color: $system-error-red;
+        
+                    &:hover{
+                        background-color: darken($system-error-red, 10%);
+                    }
+                }
+            }
+
+    
+            p{
+                @include font-config(15px, $fregular, $neutral-color-dark-gray);
+                text-align: center;
+            }
+    
+            .volunteers-name, .volunteers-message{
+                width: 100%;
+                background-color: $primary-dark-blue;
+                color: $neutral-color-white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 66px;
+            }
+    
+            .volunteers-name{
+                border-radius: 12px 12px 0 0;
+    
+                p{
+                    width: 80%;
+                    @include font-config(20px, $fbold, $neutral-color-white);
+                }
+            }
+    
+            .volunteers-message{
+                border-radius: 0 0 12px 12px;
+    
+                p{
+                    width: 80%;
+                    @include font-config(14px, $fmedium, $neutral-color-white);
+                }
+            }
+        }
+    }
+
+}
+
+
+@media screen and (min-width: 300px) and (max-width: 1199px){
+    .update-volunteer-section{
+
+        .update-volunteer-form-container{
+            width: 90%;
+        }
+    }
+}

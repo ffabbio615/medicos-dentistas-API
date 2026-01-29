@@ -1,0 +1,315 @@
+@use '../../App.scss' as *;
+
+
+.health-care-section{
+    display: flex;
+    width: 100%;
+    height: 600px;
+    padding: 0 10%;
+    justify-content: space-evenly;
+    background-color: $neutral-color-light-gray;
+
+    .health-text-container{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        align-items: end;
+        justify-content: center;
+
+        div{
+            width: 70%;
+
+            h1{
+                @include font-config($plusPX, $fblack, $neutral-color-black);
+                line-height: 60px;
+                
+                
+                span{
+                    @include font-config($plusPX, $fregular, $neutral-color-black);
+                    letter-spacing: 3px;
+                }
+            }
+    
+            p{
+                margin-top: 20px;
+                @include font-config($f16px, $fregular, $neutral-color-black);
+                line-height: 24px;
+            }
+
+            button{
+                margin-top: 24px;
+                @include common-button(220px, 50px);
+                @include font-config($f15px, $fsemiBold, $neutral-color-white);
+            }
+        }
+    }
+
+    .health-care-image-container{
+        display: flex;
+        width: 50%;
+        justify-content: start;
+
+        img{
+            height: 100%;
+            max-width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.our-services-section{
+    display: flex;
+    width: 100%;
+    height: 300px;
+    padding: 0 10%;
+    justify-content: space-evenly;
+    background-color: $primary-light-blue;
+
+    .services-cards-container{
+        width: 80%;
+        display: flex;
+
+        .card-container:nth-child(2){
+            background-color: $primary-dark-blue;
+        }
+
+        .card-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+                
+            .card-title{
+                width: 100%;
+                @include font-config($f24px, $fsemiBold, $neutral-color-white);
+                text-align: center;
+            }
+
+            .card-description{
+                width: 80%;
+                @include font-config($f16px, $fregular, $neutral-color-white);
+                text-align: center;
+                margin-top: 16px;
+                line-height: 24px;
+            }
+        }
+    }
+}
+
+.our-departments-section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    padding: 4% 10%;
+    justify-content: space-evenly;
+    background-color: $neutral-color-light-gray;
+
+        .department-header-container{
+            width: 80%;
+
+            h2{
+                @include font-config($f28px, $fbold, $neutral-color-black);
+                text-align: center
+            }
+
+            p{
+                @include font-config($f16px, $fregular, $neutral-color-black);
+                text-align: center;
+                margin-top: 20px;
+                line-height: 24px;
+            }
+        }
+
+        .department-cards-container{
+            margin-top: 48px;
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .card-container:nth-child(n + 4):nth-child(-n + 6){
+                margin-top: 48px;
+            }
+
+            .card-container{
+                width: 28%;
+                height: 360px;
+                padding-bottom: 24px;
+                margin: 0 2%;
+                background-color: $neutral-color-white;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                cursor: pointer;
+                border-radius: 10px;
+                border: none;
+                box-shadow: 0 0 15px -7px $neutral-color-black;
+                transition: 0.2s;
+
+                &:hover{
+                    transform: scale(1.05);
+                }
+
+                img{
+                    width: 100%;
+                    height: 210px
+                }
+
+                .card-title{
+                    @include font-config($f20px, $fsemiBold, $neutral-color-black);
+                    width: 90%;
+                    margin-top: 24px;
+                }
+
+                .card-description{
+                    @include font-config($f14px, $fregular, $neutral-color-black);
+                    width: 90%;
+                    margin-top: 4px;
+                    line-height: 20px;
+                }
+            }
+        }
+}
+
+.health-care-section, .our-services-section, .our-departments-section{ scroll-margin-top: 90px; }
+
+@media screen and (min-width: 300px) and (max-width: 1199px){
+
+    .health-care-section{
+            height: 600px;
+            padding-inline: 16px;
+            padding-top: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+
+        .health-text-container{
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+
+            div{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                h1{
+                    @include font-config($f30px, $fblack, $neutral-color-black);
+                    line-height: 30px;
+                    text-align: center;
+                    
+                    
+                    span{
+                        @include font-config($f30px, $fregular, $neutral-color-black);
+                        letter-spacing: 2px;
+                    }
+                }
+        
+                p{
+                    width: 80%;
+                    margin-top: 12px;
+                    @include font-config($f14px, $fregular, $neutral-color-black);
+                    line-height: 20px;
+                    
+                }
+            }
+        }
+
+        .health-care-image-container{
+            display: flex;
+            width: 100%;
+            justify-content: start;
+        }
+    }
+
+    .our-services-section{
+        height: auto;
+        padding: 0 0;
+        justify-content: center;
+
+        .services-cards-container{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .card-container:nth-child(2){
+                background-color: $primary-dark-blue;
+            }
+
+            .card-container{
+                padding-block: 16px;
+
+                .card-description{
+                    margin-top: 8px;
+                }
+            }
+        }
+    }
+
+    .our-departments-section{
+        padding: 24px 16px;
+        justify-content: center;
+
+            .department-header-container{
+                width: 100%;
+
+                p{
+                    @include font-config($f16px, $fregular, $neutral-color-black);
+                    text-align: left;
+                    line-height: 24px;
+                }
+            }
+
+            .department-cards-container{
+                margin-top: 24px;
+                width: 100%;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: start;
+                overflow-x: scroll;
+
+                .card-container:nth-child(n + 4):nth-child(-n + 6){
+                    margin-top: 0;
+                }
+
+                .card-container{
+                    width: 100%;
+                    min-width: 280px;
+
+                    &:hover{
+                        transform: scale(1);
+                    }
+
+                    img{
+                        height: auto;
+                    }
+
+                    .card-title{
+                        margin-top: 16px;
+                    }
+
+                    .card-description{
+                        @include font-config($f15px, $fregular, $neutral-color-black);
+                        margin-top: 0;
+                        line-height: 20px;
+                    }
+                }
+            }
+    }
+}
+
+@media screen and (min-width: 420px) and (max-width: 1199px){
+    .health-care-section{
+        height: auto;
+
+        .health-care-image-container{
+            margin-top: 24px;
+            justify-content: center;
+
+            img{
+                max-width: 50%;
+            }
+        }
+    }
+}

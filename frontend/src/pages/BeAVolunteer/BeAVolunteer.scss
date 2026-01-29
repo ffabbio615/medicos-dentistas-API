@@ -1,0 +1,119 @@
+@use "../../App.scss" as *;
+
+.be-volunteer-section{
+    width: 100%;
+    height: auto;
+    padding: 5% 10%;
+    background-color: $neutral-color-light-gray;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .volunteer-title-container{
+        width: 100%;
+        margin-bottom: 24px;
+
+        h1{
+            @include font-config($f42px, $fblack, $neutral-color-dark-gray);
+            text-align: center;
+        }
+
+        p{
+            margin-top: 24px;
+            @include font-config($f15px, $fregular, $neutral-color-dark-gray);
+            text-align: center;
+        }
+    }
+
+    .volunteer-tasks-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 2%;
+        margin-top: 24px;
+
+        .task-item{
+            width: 25%;
+            min-width: 333px;
+            height: auto;
+            padding: 2% 4%;
+            background-color: $neutral-color-white;
+            border: 2px solid rgba($neutral-color-medium-gray, 0.5);
+            border-radius: 10px;
+
+            .task-title{
+                @include font-config($f22px, $fbold, $neutral-color-black);
+                text-align: center;
+            }
+
+            .task-description{
+                @include font-config($f15px, $fregular, $neutral-color-black);
+                text-align: center;
+                margin-top: 12px;
+            }
+        }
+    }
+}
+
+.volunteer-registration-section{
+    width: 100%;
+    height: auto;
+    padding: 5% 10%;
+    background-color: $primary-dark-blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .create-volunteer-form-container{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .registration-success{
+            @include font-config($f20px, $fmedium, $neutral-color-white);
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 1199px){
+
+    .be-volunteer-section{
+        padding: 24px 16px;
+
+        .volunteer-title-container{
+            margin-bottom: 8px;
+
+            p{
+                margin-top: 16px;
+                @include font-config($f16px, $fregular, $neutral-color-dark-gray);
+            }
+        }
+
+        .volunteer-tasks-container{
+            justify-content: left;
+            column-gap: 12px;
+            margin-top: 16px;
+            overflow-x: scroll;
+
+            .task-item{
+                min-width: 280px;
+
+                .task-description{
+                    margin-top: 8px;
+                }
+            }
+        }
+    }
+
+    .volunteer-registration-section{
+        padding: 24px 8px;
+
+        .create-volunteer-form-container{
+            width: 90%;
+        }
+    }
+}
