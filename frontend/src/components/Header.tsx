@@ -4,7 +4,6 @@ import './Header.scss'
 export default function Header() {
 
   const location = useLocation();
-  const isHome = location.pathname === '/';
   const path = {
     isHome: location.pathname === "/",
     isBeVolunteer: location.pathname === "/be-a-volunteer",
