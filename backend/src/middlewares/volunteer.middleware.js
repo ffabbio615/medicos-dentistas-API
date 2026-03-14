@@ -12,7 +12,7 @@ export function volunteerMiddleware(req, res, next){
         return res.status(400).json({ error: "Email inválido." });
     }
 
-    const telRegex = /^[0-9]{10,11}$/;
+    const telRegex = /^\(\d{2}\) \d{4}-\d{5}$/;
 
     if(!telRegex.test(tel)){
         return res.status(400).json({ error: "Telefone inválido." });
