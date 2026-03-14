@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.scss";
 
 export default function Login(){
 
     const [username, setUsername] =  useState('');
     const [password, setPassword] =  useState('');
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            navigate("/volunteer-list");
+        }
+    },[])
     
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try{
-            const response = await fetch('http://localhost:8080/auth/login', {
+            const response = await fetch('https://medicos-dentistas-api.onrender.com/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -22,7 +32,7 @@ export default function Login(){
                 // Armazenar o token no localStorage ou em um estado global
                 localStorage.setItem('token', data.token);
                 // Redirecionar para a página de lista de voluntários
-                window.location.href = '/volunteer-list';
+                navigate("/volunteer-list");
             } else {
                 alert('Falha no login: ' + data.message);
             }

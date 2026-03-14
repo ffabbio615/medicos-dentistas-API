@@ -1,16 +1,17 @@
 import {Router} from "express";
 import { getVolunteers, createVolunteer, deleteVolunteer, updateVolunteer } from "../controllers/volunteer.controller.js";
 import { authMiddleware } from "../middlewares/auth.middleware.js";
+import { volunteerMiddleware } from "../middlewares/volunteer.middleware.js";
 
 
 const router = Router();
 
 router.get("/volunteers", authMiddleware, getVolunteers);
 
-router.post("/volunteers", createVolunteer);
+router.post("/volunteers", volunteerMiddleware, createVolunteer);
 
 router.delete("/volunteers/:id", authMiddleware, deleteVolunteer);
 
-router.put("/volunteers/:id", authMiddleware, updateVolunteer);
+router.put("/volunteers/:id", authMiddleware, volunteerMiddleware, updateVolunteer);
 
 export default router;

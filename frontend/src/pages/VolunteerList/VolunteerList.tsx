@@ -19,7 +19,7 @@ export default function VolunteerList(){
                     conectionError();
                     return;
                 }
-                const res = await fetch("http://localhost:8080/api/volunteers", {
+                const res = await fetch("https://medicos-dentistas-api.onrender.com/api/volunteers", {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -47,7 +47,7 @@ export default function VolunteerList(){
     }
 
     const handleDeleteVolunteer = async(id: number) =>{
-        const res = await fetch(`http://localhost:8080/api/volunteers/${id}`, {
+        const res = await fetch(`https://medicos-dentistas-api.onrender.com/api/volunteers/${id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -71,7 +71,7 @@ export default function VolunteerList(){
     }
 
     const handleUpdateVolunteer = async(data: VolunteerFormData) => {
-        const res = await fetch(`http://localhost:8080/api/volunteers/${volunteerIndex!}`, {
+        const res = await fetch(`https://medicos-dentistas-api.onrender.com/api/volunteers/${volunteerIndex!}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

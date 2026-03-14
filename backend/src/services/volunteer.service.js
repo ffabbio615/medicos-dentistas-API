@@ -21,10 +21,13 @@ export function createVolunteers(data){
 
 export function deleteVolunteers(id){
     const index = volunteers.findIndex(volunteer => volunteer.id === id);
+
     if(index !== -1){
         volunteers.splice(index, 1);
         return true;
     }
+
+    return false;
 }
 
 export function updateVolunteers(id, data){

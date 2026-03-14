@@ -23,7 +23,7 @@ export default function BeAVolunteer() {
     const [finishedRegistration, setFinishedRegistration] = useState(false);
 
     async function handleCreateVolunteer(data: VolunteerFormData){
-        const res = await fetch("http://localhost:8080/api/volunteers", {
+        const res = await fetch("https://medicos-dentistas-api.onrender.com/api/volunteers", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
