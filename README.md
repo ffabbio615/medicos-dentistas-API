@@ -1,18 +1,29 @@
-# 🏥 Médicos & Dentistas
+# 🦷 Médicos e Dentistas — Versão API
 
-Projeto frontend desenvolvido com **React + TypeScript + Vite**, simulando uma landing page institucional voltada para a divulgação de um projeto social de **atendimento médico e odontológico gratuito**, além de incentivar o voluntariado.
+Projeto full stack composto por uma **API REST** e uma **interface web** para gerenciamento de voluntários de uma organização fictícia de médicos e dentistas.
 
-O projeto foi construído com foco em **boas práticas de frontend**, **componentização**, **roteamento SPA** e **experiência do usuário**.
+A aplicação permite:
+
+* cadastrar voluntários
+* listar voluntários
+* atualizar informações
+* remover voluntários
+
+O objetivo do projeto é praticar a criação de APIs com  **Node.js e Express** , além da integração com **React + TypeScript** no frontend.
 
 ---
 
-## 🔗 Demonstração
+# 🌐 Deploy da aplicação
 
-> Projeto frontend estático (SPA). Pode ser executado localmente seguindo as instruções abaixo.
+Frontend (Vercel)
+[https://medicos-dentistas-api.vercel.app/](https://medicos-dentistas-api.vercel.app/)
+
+API (Render)
+[https://medicos-dentistas-api.onrender.com](https://medicos-dentistas-api.onrender.com/)
 
 ---
 
-## ✨ Funcionalidades
+# ✨ Funcionalidades
 
 * 📄 **Landing Page institucional**
 * 🧭 **Navegação SPA com React Router DOM**
@@ -22,151 +33,231 @@ O projeto foi construído com foco em **boas práticas de frontend**, **componen
 * 🔗 **Anchor links** com ajuste para header fixo
 * 📱 Layout responsivo (desktop-first)
 * 🎨 Estilização com **SASS (SCSS)**
+* **📄 Crud com Banco de Dados fake, utilizando API e Middlewares**
 
 ---
 
-## 🗺️ Estrutura de Rotas
+# ⚠️ Avisos importantes
 
-```txt
-/                → Página inicial (Home)
-/be-a-volunteer  → Página Seja um Voluntário
+### API em produção
+
+O frontend publicado na Vercel está configurado para consumir a API hospedada no Render.
+
+Se você quiser rodar o projeto  **localmente** , será necessário alterar as URLs das requisições para:
+
+```
+http://localhost:3000
 ```
 
-Implementadas com **React Router DOM v6**.
+Isso deve ser feito nos arquivos responsáveis pelas chamadas da API no frontend.
 
 ---
 
-## 🧱 Estrutura do Projeto
+### Tempo de expiração do token
 
-```txt
-src/
- ├─ components/
- │  ├─ Header/
- │  └─ Footer/
- ├─ pages/
- │  ├─ Home/
- │  └─ BeAVolunteer/
- ├─ App.tsx
- ├─ main.tsx
- └─ styles/
+O sistema utiliza autenticação por  **JWT** .
+
+O token gerado no login tem duração de  **5 minutos** .
+Após esse tempo, será necessário realizar login novamente.
+
+Esse tempo curto foi configurado propositalmente para fins de demonstração e testes.
+
+---
+
+# 🚀 Tecnologias utilizadas
+
+Backend
+
+* Node.js
+* Express
+* JavaScript (ES Modules)
+
+Frontend
+
+* React
+* TypeScript
+* Vite
+* React Router
+
+Infraestrutura
+
+* Render (deploy da API)
+* Vercel (deploy do frontend)
+
+---
+
+# 📂 Estrutura do projeto
+
+```
+medicos-dentistas-API
+│
+├── backend
+│   ├── controllers
+│   ├── middlewares
+│   ├── routes
+│   ├── services
+│   ├── database
+│   └── server.js
+│
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── services
+│   │   └── types
+│   └── index.html
+```
+
+O projeto une as pastas de front-end e back-end para fins acadêmicos e utiliza separação em camadas:
+
+* **Routes** → definição dos endpoints
+* **Middlewares** → validações e autenticação
+* **Controllers** → tratamento das requisições
+* **Services** → manipulação dos dados
+
+---
+
+# 📡 Endpoints da API
+
+Base URL
+
+```
+https://medicos-dentistas-api.onrender.com
+```
+
+### Listar voluntários
+
+```
+GET /volunteers
 ```
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+### Criar voluntário
 
-* **React 18**
-* **TypeScript**
-* **Vite**
-* **React Router DOM v6**
-* **SASS (SCSS)**
-* **ESLint**
-
----
-
-## 🎯 Destaques Técnicos
-
-### 🔹 Header Inteligente
-
-O Header se adapta automaticamente de acordo com a rota atual:
-
-* Na Home: exibe navegação por seções (anchor links)
-* Em outras páginas: exibe link para retornar à Home
-
-Essa lógica é baseada na rota atual usando `useLocation`, evitando estados manuais desnecessários.
-
----
-
-### 🔹 Navegação por Anchor Links
-
-As seções da Home utilizam *anchor links* (`#id`) com correção para header fixo usando:
-
-```scss
-scroll-margin-top
+```
+POST /volunteers
 ```
 
-Isso garante que o conteúdo não fique oculto atrás do header ao navegar.
+Body:
 
----
-
-### 🔹 Componentização
-
-* Cards de serviços e departamentos são renderizados dinamicamente a partir de arrays
-* Estrutura preparada para fácil escalabilidade
-
----
-
-## ▶️ Como Executar o Projeto
-
-### 📦 Pré-requisitos
-
-* **Node.js** (versão 18 ou superior)
-* **npm** ou **yarn**
-
----
-
-### 🚀 Instalação
-
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/seu-usuario/medicosdentistas.git
+```json
+{
+  "name": "João Silva",
+  "tel": "21999999999",
+  "email": "joao@email.com",
+  "message": "Quero participar como voluntário"
+}
 ```
 
-2. Acesse a pasta do projeto:
+---
 
-```bash
-cd medicosdentistas
+### Atualizar voluntário
+
+```
+PUT /volunteers/:id
 ```
 
-3. Instale as dependências:
+---
 
-```bash
+### Deletar voluntário
+
+```
+DELETE /volunteers/:id
+```
+
+---
+
+# 💻 Como rodar o projeto localmente
+
+Clone o repositório:
+
+```
+git clone https://github.com/ffabbio615/medicos-dentistas-API
+```
+
+Entre na pasta do projeto:
+
+```
+cd medicos-dentistas-API
+```
+
+---
+
+# Backend
+
+```
+cd backend
 npm install
-```
-
-4. Execute o projeto em modo desenvolvimento:
-
-```bash
 npm run dev
 ```
 
-5. Acesse no navegador:
+Servidor rodará em:
 
-```txt
+```
+http://localhost:3000
+```
+
+---
+
+# Frontend
+
+Antes de rodar o frontend localmente, altere as URLs das requisições para:
+
+```
+http://localhost:3000
+```
+
+Depois execute:
+
+```
+cd frontend
+npm install
+npm run dev
+```
+
+Aplicação disponível em:
+
+```
 http://localhost:5173
 ```
 
 ---
 
-## 🏗️ Build para Produção
+# 🎯 Objetivo do projeto
 
-```bash
-npm run build
-```
+Este projeto foi criado para praticar:
 
-Para visualizar o build localmente:
+* desenvolvimento de **APIs REST**
+* organização de projetos **Node.js**
+* integração com **React**
+* uso de **TypeScript**
+* autenticação com **JWT**
+* deploy em nuvem
 
-```bash
-npm run preview
-```
+---
+
+# 📌 Status do projeto
+
+Projeto funcional para fins educacionais.
+
+Possíveis melhorias futuras:
+
+* banco de dados real (PostgreSQL ou MongoDB)
+* autenticação mais robusta
+* refresh token
+* paginação de resultados
+* testes automatizados
 
 ---
 
-## 📌 Observações
-
-* Projeto **frontend apenas** (sem backend)
-* Conteúdo fictício com fins educacionais
-* Estrutura preparada para futura integração com APIs
-
----
 
 ## 👤 Autor
 
 **Fábio Marques**
 
 * Projeto desenvolvido para fins de estudo e avaliação técnica
-* 2025 © Todos os direitos reservados
+* 2026 © Todos os direitos reservados
 
 ---
 
