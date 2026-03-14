@@ -1,6 +1,6 @@
 import "./VolunteerForm.scss";
 import {useState} from "react";
-import { VolunteerFormData } from "../types/volunteer";
+import type { VolunteerFormData } from "../types/volunteer";
 
 export default function VolunteerForm({onSubmit, formTitle}: {onSubmit: (data: VolunteerFormData) => Promise<void>, formTitle: string}) {
 
