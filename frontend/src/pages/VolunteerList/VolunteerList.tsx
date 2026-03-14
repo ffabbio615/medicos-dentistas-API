@@ -1,8 +1,9 @@
 import "./VolunteerList.scss";
 import { useEffect, useState } from "react";
-import { VolunteerFormData } from "../../types/volunteer";
+import type { VolunteerFormData } from "../../types/volunteer";
 import VolunteerForm from "../../components/VolunteerForm";
 import Loader from "../../components/Loader";
+import { useNavigate } from "react-router-dom";
 
 export default function VolunteerList(){
 
@@ -11,6 +12,12 @@ export default function VolunteerList(){
     const [showUpdateForm, setShowUpdateForm] = useState<boolean>(false);
     const [volunteerIndex, setVolunteerIndex] = useState<number | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const navigate = useNavigate();
+
+    const conectionError = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+    }
 
     useEffect(()=>{
         const getVolunteers = async() =>{
@@ -33,18 +40,13 @@ export default function VolunteerList(){
                 setTimeout(() => {
                     setLoading(false);
                 }, 1000);
-            } catch (error) {
+            } catch {
                 conectionError();
             }
         }
 
         getVolunteers();
-    },[]);
-
-    const conectionError = () => {
-        localStorage.removeItem("token");
-        window.location.href = "/login";
-    }
+    });
 
     const handleDeleteVolunteer = async(id: number) =>{
         const res = await fetch(`https://medicos-dentistas-api.onrender.com/api/volunteers/${id}`, {
@@ -56,7 +58,7 @@ export default function VolunteerList(){
 
         if(res.status === 401){
             localStorage.removeItem("token");
-            window.location.href = "/login";
+            navigate("/login");
             return;
         }
         
@@ -89,7 +91,7 @@ export default function VolunteerList(){
 
         if(res.status === 401){
             localStorage.removeItem("token");
-            window.location.href = "/login";
+            navigate("/login");
             return;
         }
         const updatedVolunteer = await res.json();

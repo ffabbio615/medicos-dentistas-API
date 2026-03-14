@@ -14,7 +14,7 @@ export default function Login(){
         if (token) {
             navigate("/volunteer-list");
         }
-    },[])
+    },[navigate]);
     
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

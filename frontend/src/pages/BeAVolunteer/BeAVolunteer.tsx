@@ -1,7 +1,7 @@
-import { useState, type MouseEvent } from "react";
+import { useState } from "react";
 import "./BeAVolunteer.scss";
 import VolunteerForm from "../../components/VolunteerForm";
-import { VolunteerFormData } from "../../types/volunteer";
+import type { VolunteerFormData } from "../../types/volunteer";
 
 export default function BeAVolunteer() {
 
